@@ -1,0 +1,6 @@
+A collection of useful racks to simplify a work with search engines in registration/verification/analytics
+Feel free to fork and send a patches or suggest a some idea.
+
+== Copyright
+
+Copyright (c) 2010 Oleg Keene(ol.keene@gmail.com). See LICENSE for details.
