@@ -5,7 +5,7 @@
 module Rack
   class YandexVerification
     def initialize(app, code)
-      @app = app
+      @app  = app
       @code = code
     end
 
@@ -13,12 +13,12 @@ module Rack
       status, headers, body = @app.call(env)
 
       body.each do |part|
-        if part =~ /<head>/
-          add_str = "<head>\n#{tracking_code}"
-          part.sub!(/<head>/, add_str)
+        if part =~ /<\/head>/
+          add_str = "#{tracking_code}</head>"
+          part.sub!(/<\/head>/, add_str)
 
           if headers['Content-Length']
-            headers['Content-Length'] = (headers['Content-Length'].to_i + add_str.length).to_s
+            headers['Content-Length'] = (headers['Content-Length'].to_i + tracking_code.length).to_s
           end
 
           break
